@@ -14,6 +14,7 @@ if (!fs.existsSync(logDir)) {
   fs.mkdirSync(logDir, { recursive: true });
 }
 
+// Define transports file for combined logs and error logs with daily rotation
 const combinedTransport = new winston.transports.DailyRotateFile({
   filename: path.join(logDir, 'combined-%DATE%.log'),
   datePattern: 'YYYY-MM-DD',
@@ -35,6 +36,7 @@ export const logger = winston.createLogger({
   transports: [combinedTransport, errorTransport],
 });
 
+// terminal logging for development
 if (process.env.NODE_ENV !== 'production') {
   logger.add(
     new winston.transports.Console({
@@ -52,7 +54,6 @@ const prisma_error_instance = [
   Prisma.PrismaClientKnownRequestError,
   Prisma.PrismaClientInitializationError,
   Prisma.PrismaClientRustPanicError,
-  Prisma.PrismaClientInitializationError,
   Prisma.PrismaClientValidationError,
 ];
 
