@@ -13,8 +13,5 @@ updates:
       prefix: 'chore'
     pull-request-branch-name:
       separator: '-'
-    assignees:
-      - 'WilsonnnTan'
-      - 'Fzzrr'
     labels:
       - 'pnpm dependencies'
