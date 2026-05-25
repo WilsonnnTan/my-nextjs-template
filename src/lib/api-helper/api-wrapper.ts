@@ -16,7 +16,6 @@ interface User {
 
 type ApiHandlerContext<T = unknown, TUser = User | null> = {
   user: TUser;
-  userId?: string;
   params: T;
   req: Request;
 };
@@ -74,7 +73,6 @@ export function withApiPublic<T = unknown>(
         user,
         params: resolvedParams,
         req,
-        userId: user?.id,
       });
     } catch (err) {
       return handleApiError(err, req);
